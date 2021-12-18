@@ -6,7 +6,6 @@
 *.psd
 *.sublime*
 node_modules/
-config
 npm-debug.*
 source/css/*.css
 source/css/*.map
