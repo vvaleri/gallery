@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ImageItem } from '../ImageItem/ImageItem';
 import { ImageModal } from '../ImageModal/ImageModal';
+import { Loader } from '../UI/Loader/Loader';
 import { Main, Title, List } from './gallery.style';
 import useScrollBlock from '../../hooks/useScrollBlock';
 import { APIKey } from '../../config/api-key';
@@ -9,7 +10,9 @@ import { APIKey } from '../../config/api-key';
 export const Gallery = () => {
   const [images, setImages] = useState([]);
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
+  // для выбранного изображения
   const [imageTarget, setImageTarget] = useState({});
 
   const [like, setLike] = useState(false);
@@ -18,11 +21,15 @@ export const Gallery = () => {
   const [blockScroll, allowScroll] = useScrollBlock();
 
   useEffect(() => {
-    // axios.get(`https://api.unsplash.com/photos/?client_id=${APIKey}&per_page=20`)
-    //   .then(res => {
-    //     setImages([...images, ...res.data]);
-    //   })
-    //   .catch(err => setError(err.message));
+    axios.get(`https://api.unsplash.com/photos/?client_id=${APIKey}&per_page=20`)
+      .then(res => {
+        setImages([...images, ...res.data]);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setIsLoading(false);
+      });
   }, []);
 
   const showImageModal = imgData => {
@@ -41,13 +48,22 @@ export const Gallery = () => {
   return (
     <Main>
       <Title>Image gallery</Title>
+      { error.length > 0
+            && (
+            <div>
+              Ошибка
+              {' '}
+              {error}
+              . Пожалуйста, обновите страницу или попробуйте повторить запрос позднее
+            </div>
+            )}
       <List>
         {
-          images.length > 0
-            ? images.map(image => (
+          isLoading
+            ? <Loader />
+            : images.map(image => (
               <ImageItem key={image.id} image={image} showModal={showImageModal} />
             ))
-            : <div>Изображения не найдены</div>
         }
       </List>
       <ImageModal

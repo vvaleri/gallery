@@ -13,20 +13,11 @@ const Container = styled.div`
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-  transform: scale(1);
-  visibility: visible;
-  opacity: 1;
   z-index: 20;
 
   &::-webkit-scrollbar {
     display: none;
   }
-  /* &.visible {
-    transform: scale(1);
-    visibility: visible;
-    opacity: 1;
-  } */
 `;
 
 const Wrap = styled.div`
@@ -108,11 +99,4 @@ const Image = styled.div`
   }
 `;
 
-const Div = styled.div`
-  width: 360px;
-  height: 410px;
-  border: 1px solid pink;
-  margin-bottom: 10px;
-`;
-
-export { Container, Wrap, Overlay, Content, CloseBtn, Image, Div };
+export { Container, Wrap, Overlay, Content, CloseBtn, Image };
