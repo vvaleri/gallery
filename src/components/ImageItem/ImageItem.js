@@ -1,8 +1,8 @@
 import React from 'react';
 import { Item } from './imageItem.style';
 
-export const ImageItem = ({ image }) => (
-  <Item>
+export const ImageItem = ({ image, showModal }) => (
+  <Item onClick={() => showModal(image)}>
     <img
       width="390px"
       height="260px"
