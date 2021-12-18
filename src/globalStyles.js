@@ -7,11 +7,8 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
-  html, body {
-    height: 100%;
-  }
-
   body {
+    height: 100%;
     overflow-x: hidden;
     background-color: #F5F3F4;
     color: #3D4044;
