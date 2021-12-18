@@ -14,7 +14,7 @@ const Container = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-  transform: scale(1.2);
+  transform: scale(1);
   visibility: visible;
   opacity: 1;
   z-index: 20;
@@ -39,9 +39,12 @@ const Wrap = styled.div`
   min-height: 100%;
   padding: 60px 40px;
 
+  @media (max-width: 1024px) {
+    padding: 40px 20px;
+  }
+
   @media (max-width: 767px) {
     padding: 0;
-    flex-shrink: 1;
   }
 `;
 
@@ -56,16 +59,15 @@ const Overlay = styled.div`
 const Content = styled.div`
   position: relative;
   display: flex;
-  /* flex-direction: column; */
   min-width: 510px;
   background-color: #fff;
-  padding: 40px 50px;
+  padding: 30px;
   border-radius: 10px;
   color: #000;
 
 
   @media (max-width: 767px) {
-    justify-content: center;
+    flex-direction: column;
     padding: 30px 20px;
     min-width: 100%;
     width: 100%;
@@ -83,14 +85,34 @@ const CloseBtn = styled.button`
     cursor: pointer;
 `;
 
+const Image = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-right: 15px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 10px;
+    margin-right: 0;
+    padding: 0;
+    padding-top: 10px;
+  }
+
+  img {
+    margin-bottom: 10px;
+
+    @media (max-width: 767px) {
+      max-height: 250px;
+      object-fit: cover;
+    }
+  }
+`;
+
 const Div = styled.div`
   width: 360px;
   height: 410px;
   border: 1px solid pink;
-`;
-
-const Image = styled.div`
-  position: relative;
+  margin-bottom: 10px;
 `;
 
 export { Container, Wrap, Overlay, Content, CloseBtn, Image, Div };

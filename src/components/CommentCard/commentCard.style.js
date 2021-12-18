@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 
 const Text = styled.div`
-  display: flex;
+  max-width: 220px;
   margin-bottom: 10px;
 
+  @media (max-width: 767px) {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
   span {
-    margin-right: 5px;
     color: #999999;
+  }
+
+  p {
+    overflow-wrap: break-word;
   }
 `;
 

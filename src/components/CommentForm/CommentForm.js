@@ -36,7 +36,7 @@ export const CommentForm = () => {
           value={textComment}
           onChange={e => setTextComment(e.target.value)}
         />
-        <Button>Отправить комментарий</Button>
+        <Button main>Отправить комментарий</Button>
       </Form>
     </Container>
   );

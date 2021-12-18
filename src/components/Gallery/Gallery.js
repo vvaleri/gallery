@@ -12,15 +12,17 @@ export const Gallery = () => {
 
   const [imageTarget, setImageTarget] = useState({});
 
+  const [like, setLike] = useState(false);
+
   const [activeModal, setActiveModal] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
 
   useEffect(() => {
-    axios.get(`https://api.unsplash.com/photos/?client_id=${APIKey}&per_page=20`)
-      .then(res => {
-        setImages([...images, ...res.data]);
-      })
-      .catch(err => setError(err.message));
+    // axios.get(`https://api.unsplash.com/photos/?client_id=${APIKey}&per_page=20`)
+    //   .then(res => {
+    //     setImages([...images, ...res.data]);
+    //   })
+    //   .catch(err => setError(err.message));
   }, []);
 
   const showImageModal = imgData => {
@@ -33,6 +35,8 @@ export const Gallery = () => {
     setActiveModal(false);
     allowScroll();
   };
+
+  const isLiked = () => setLike(!like);
 
   return (
     <Main>
@@ -50,6 +54,8 @@ export const Gallery = () => {
         closeModal={closeModal}
         imageTarget={imageTarget}
         visible={activeModal}
+        like={like}
+        isLiked={isLiked}
       />
     </Main>
   );

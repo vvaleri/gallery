@@ -17,6 +17,15 @@ const List = styled.ul`
   width: calc(100% + 25px);
   margin-bottom: -25px;
   list-style: none;
+
+  @media (max-width: 1179px) {
+    width: calc(100% + 20px);
+    margin-bottom: -20px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export { Main, Title, List };
