@@ -1,7 +1,13 @@
 import React from 'react';
+import { IImage } from '../../types';
 import { Item } from './imageItem.style';
 
-export const ImageItem = ({ image, showModal }) => (
+interface ImageItemProps {
+  image: IImage;
+  showModal: (image: IImage) => void
+}
+
+export const ImageItem = ({ image, showModal }:ImageItemProps) => (
   <Item onClick={() => showModal(image)}>
     <img
       width="390px"

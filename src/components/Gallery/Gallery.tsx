@@ -3,25 +3,27 @@ import axios from 'axios';
 import { ImageItem } from '../ImageItem/ImageItem';
 import { ImageModal } from '../ImageModal/ImageModal';
 import { Loader } from '../UI/Loader/Loader';
-import { Main, Title, List } from './gallery.style';
 import useScrollBlock from '../../hooks/useScrollBlock';
+import { IImage } from '../../types';
 import { APIKey } from '../../config/api-key';
+import { Main, Title, List } from './gallery.style';
+
 
 export const Gallery = () => {
-  const [images, setImages] = useState([]);
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+  const [images, setImages] = useState<IImage[]>([]);
+  const [error, setError] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // для выбранного изображения
   const [imageTarget, setImageTarget] = useState({});
 
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState<boolean>(false);
 
-  const [activeModal, setActiveModal] = useState(false);
+  const [activeModal, setActiveModal] = useState<boolean>(false);
   const [blockScroll, allowScroll] = useScrollBlock();
 
   useEffect(() => {
-    axios.get(`https://api.unsplash.com/photos/?client_id=${APIKey}&per_page=20`)
+    axios.get<IImage[]>(`https://api.unsplash.com/photos/?client_id=${APIKey}&per_page=20`)
       .then(res => {
         setImages([...images, ...res.data]);
         setIsLoading(false);
@@ -32,7 +34,7 @@ export const Gallery = () => {
       });
   }, []);
 
-  const showImageModal = imgData => {
+  const showImageModal = (imgData: object): void => {
     setImageTarget(imgData);
     setActiveModal(true);
     blockScroll();
