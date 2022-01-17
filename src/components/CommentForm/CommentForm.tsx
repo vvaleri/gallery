@@ -24,7 +24,7 @@ export const CommentForm = () => {
     <Container>
       <Comments>
         {
-          listComments.length > 0
+          listComments.length
             ? listComments.map(comment => (
               <CommentCard key={nanoid()} comment={comment} />
             ))

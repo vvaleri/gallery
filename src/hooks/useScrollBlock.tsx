@@ -1,14 +1,16 @@
 import { useRef } from 'react';
 
-const safeDocument = typeof document !== 'undefined' ? document : {};
+const safeDocument: Document = document;
 
 export default () => {
-  const scrollBlocked = useRef();
+  const scrollBlocked = useRef(false);
   const html = safeDocument.documentElement;
   const { body } = safeDocument;
 
   const blockScroll = () => {
     if (!body || !body.style || scrollBlocked.current) return;
+
+    if (document == undefined) return;
 
     const scrollBarWidth = window.innerWidth - html.clientWidth;
     // eslint-disable-next-line radix
