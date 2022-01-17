@@ -14,3 +14,8 @@ export interface IImage {
     description: string;
     user: IUser
 }
+
+export interface IComment {
+    time: string;
+    text: string
+}

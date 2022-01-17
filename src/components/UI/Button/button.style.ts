@@ -1,6 +1,14 @@
 import styled, { css } from 'styled-components';
 
-const MainButton = styled.button`
+export type ButtonPropsType = {
+    like?: string | boolean;
+    main?: string | boolean;
+    type: string;
+    className?: string;
+    onClick?: () => void
+}
+
+const MainButton = styled("button")<ButtonPropsType>`
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -13,7 +21,7 @@ const MainButton = styled.button`
     }
   }
 
-  ${props => props.like && css`
+  ${props => props.like &&`
     display: flex;
     align-items: center;
     align-self: center;
@@ -37,7 +45,7 @@ const MainButton = styled.button`
        }
       }
   `}
-  ${props => props.main && css`
+  ${props => props.main && `
     max-width: 220px;
     padding: 10px;
     border-radius: 5px;

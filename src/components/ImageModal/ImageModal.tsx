@@ -1,12 +1,26 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Button } from '../UI/Button/Button';
 import { CommentForm } from '../CommentForm/CommentForm';
+import { IImage } from '../../types';
 import { Container, Wrap, Overlay, Content, CloseBtn, Image } from './imageModal.style';
 import Close from '../../assets/img/icon-close.svg';
 
-export const ImageModal = ({ visible, closeModal, imageTarget, like, isLiked }) => (
-  visible
-  && (
+interface ImageModalProps {
+    visible: boolean;
+    closeModal: () => void;
+    imageTarget: IImage;
+    like: boolean;
+    isLiked: () => void
+}
+
+export const ImageModal = ({ visible,
+    closeModal,
+    imageTarget,
+    like,
+    isLiked }:ImageModalProps) => (
+  visible ?
+  ReactDOM.createPortal(
     <Container>
       <Wrap>
         <Overlay onClick={closeModal} />
@@ -34,7 +48,8 @@ export const ImageModal = ({ visible, closeModal, imageTarget, like, isLiked }) 
           </CloseBtn>
         </Content>
       </Wrap>
-    </Container>
-
+    </Container>,
+    document.body
   )
+  : null
 );

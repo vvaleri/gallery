@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { Button } from '../UI/Button/Button';
 import { CommentCard } from '../CommentCard/CommentCard';
+import { IComment } from '../../types';
 import { Container, Comments, Text, Form, Textarea } from './commentForm.style';
 
 export const CommentForm = () => {
-  const [textComment, setTextComment] = useState('');
-  const [listComments, setListComments] = useState([]);
+  const [textComment, setTextComment] = useState<string>('');
+  const [listComments, setListComments] = useState<IComment[]>([]);
 
-  const addComment = e => {
+  const addComment = (e: React.FormEvent) => {
     e.preventDefault();
     const newComment = {
       time: new Date().toLocaleTimeString(),
@@ -36,7 +37,7 @@ export const CommentForm = () => {
           value={textComment}
           onChange={e => setTextComment(e.target.value)}
         />
-        <Button main>Отправить комментарий</Button>
+        <Button type="submit" main>Отправить комментарий</Button>
       </Form>
     </Container>
   );

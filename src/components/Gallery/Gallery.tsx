@@ -12,14 +12,14 @@ import { Main, Title, List } from './gallery.style';
 export const Gallery = () => {
   const [images, setImages] = useState<IImage[]>([]);
   const [error, setError] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // для выбранного изображения
-  const [imageTarget, setImageTarget] = useState({});
+  const [imageTarget, setImageTarget] = useState<IImage>({} as IImage);
 
-  const [like, setLike] = useState<boolean>(false);
+  const [like, setLike] = useState(false);
 
-  const [activeModal, setActiveModal] = useState<boolean>(false);
+  const [activeModal, setActiveModal] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export const Gallery = () => {
       });
   }, []);
 
-  const showImageModal = (imgData: object): void => {
+  const showImageModal = (imgData: IImage): void => {
     setImageTarget(imgData);
     setActiveModal(true);
     blockScroll();
