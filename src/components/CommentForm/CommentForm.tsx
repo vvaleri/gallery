@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { nanoid } from 'nanoid';
 import { Button } from '../UI/Button/Button';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { IComment } from '../../types';
@@ -26,7 +25,7 @@ export const CommentForm = () => {
         {
           listComments.length
             ? listComments.map(comment => (
-              <CommentCard key={nanoid()} comment={comment} />
+              <CommentCard key={comment.time} comment={comment} />
             ))
             : <Text>Здесь пока нет комментариев</Text>
         }
