@@ -6,7 +6,7 @@ import { Loader } from '../UI/Loader/Loader';
 import useScrollBlock from '../../hooks/useScrollBlock';
 import { IImage } from '../../types';
 import { APIKey } from '../../config/api-key';
-import { Main, Title, List } from './gallery.style';
+import { Main, List } from './gallery.style';
 
 
 export const Gallery = () => {
@@ -49,7 +49,6 @@ export const Gallery = () => {
 
   return (
     <Main>
-      <Title>Image gallery</Title>
       { error.length > 0
             && (
             <div>

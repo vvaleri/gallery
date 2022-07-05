@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Container = styled.div`
   position: fixed;
@@ -6,17 +6,29 @@ const Container = styled.div`
   top: 0;
   bottom: 0;
   right: 0;
-  display: flex;
-  flex-direction: column;
   background-color: rgba(0, 0, 0, 0.8);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   z-index: 20;
+  /* for firefox */
+  scrollbar-color: #424242 #686868;
 
   &::-webkit-scrollbar {
-    display: none;
+    width: 16px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #424242;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #686868;
+  }
+
+  @media (max-width: 767px) {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
@@ -28,11 +40,7 @@ const Wrap = styled.div`
   align-items: center;
   width: 100%;
   min-height: 100%;
-  padding: 60px 40px;
-
-  @media (max-width: 1024px) {
-    padding: 40px 20px;
-  }
+  padding: 15px;
 
   @media (max-width: 767px) {
     padding: 0;
@@ -56,7 +64,6 @@ const Content = styled.div`
   border-radius: 10px;
   color: #000;
 
-
   @media (max-width: 767px) {
     flex-direction: column;
     padding: 30px 20px;
@@ -68,12 +75,12 @@ const Content = styled.div`
 `;
 
 const CloseBtn = styled.button`
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 `;
 
 const Image = styled.div`

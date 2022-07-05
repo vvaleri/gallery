@@ -4,13 +4,6 @@ const Main = styled.main`
   padding: 20px;
 `;
 
-const Title = styled.h1`
-  margin-bottom: 35px;
-  font-size: 28px;
-  font-weight: 700;
-  text-align: center;
-`;
-
 const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -28,4 +21,4 @@ const List = styled.ul`
   }
 `;
 
-export { Main, Title, List };
+export { Main, List };
